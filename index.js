@@ -17,7 +17,7 @@ function errorHandler (err, req, res, next) {
 
 app.listen(port, () => {
   var hostName = 'http://' + host + ':' + port
-  console.log('Application running at: ' + hostName)
+  console.log('Application running : ' + hostName)
 })
 
 app.use(bodyParser.json())
