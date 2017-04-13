@@ -10,8 +10,7 @@ services:
     ports:
       - "27017:27017"
   api:
-    build:
-      context: ../api
+    build: git@github.com:RunnableDemoForYash/api
     ports:
       - "3000:3000"
     links:
