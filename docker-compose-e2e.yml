@@ -8,7 +8,8 @@ services:
     ports:
       - "27017:27017"
   api:
-    build: https://github.com/RunnableDemoForYash/api
+    build:
+      context: ../api
     ports:
       - "3000:3000"
     links:
@@ -23,5 +24,3 @@ services:
       - "api"
     environment:
       - API_HOST=api:3000
-  selenium:
-    image: elgalu/selenium:2
