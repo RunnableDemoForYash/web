@@ -1,0 +1,29 @@
+version: '2'
+services:
+  tests:
+    build: .
+    command: npm test
+    links:
+      - "web"
+    environment:
+      - WEB_HOST=web
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+  api:
+    build: git@github.com:RunnableDemoForYash/api
+    ports:
+      - "3000:3000"
+    links:
+      - "db"
+    environment:
+      - MONGODB_HOST=db
+  web:
+    build: .
+    ports:
+      - "80:80"
+    links:
+      - "api"
+    environment:
+      - API_HOST=api:3000
