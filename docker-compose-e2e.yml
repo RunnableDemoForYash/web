@@ -1,5 +1,8 @@
 version: '2'
 services:
+  tests:
+    build: .
+    command: npm test
   db:
     image: mongo
     ports:
@@ -20,8 +23,5 @@ services:
       - "api"
     environment:
       - API_HOST=api:3000
-  tests:
-    build: .
-    command: npm test
   selenium:
     image: elgalu/selenium:2
