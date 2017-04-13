@@ -5,13 +5,13 @@ services:
     ports:
       - "27017:27017"
   api:
-    build: git@github.com/RunnableDemoForYash/api.git
+    build: git@github.com:RunnableDemoForYash/api
     ports:
       - "3000:3000"
     links:
       - "db"
     environment:
-      - MONGODB_HOST: db
+      - MONGODB_HOST=db
   web:
     build: .
     ports:
@@ -19,4 +19,4 @@ services:
     links:
       - "api"
     environment:
-      - API_HOST: api
+      - API_HOST=api
