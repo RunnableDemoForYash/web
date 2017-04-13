@@ -18,7 +18,8 @@
   ],
   "scripts": {
     "start": "node index.js",
-    "prestart": "gulp"
+    "prestart": "gulp",
+    "test": "echo test"
   },
   "author": "Runnable, Inc.",
   "license": "MIT",
@@ -33,6 +34,7 @@
     "gulp-string-replace": "^0.4.0"
   },
   "devDependencies": {
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "nightwatch": "^0.9.14"
   }
 }

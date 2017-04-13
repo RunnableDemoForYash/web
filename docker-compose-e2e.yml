@@ -1,0 +1,27 @@
+version: '2'
+services:
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+  api:
+    build: https://github.com/RunnableDemoForYash/api
+    ports:
+      - "3000:3000"
+    links:
+      - "db"
+    environment:
+      - MONGODB_HOST=db
+  web:
+    build: .
+    ports:
+      - "80:80"
+    links:
+      - "api"
+    environment:
+      - API_HOST=api:3000
+  tests:
+    build: .
+    command: npm test
+  selenium:
+    image: elgalu/selenium:2
