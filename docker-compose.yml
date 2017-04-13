@@ -19,4 +19,4 @@ services:
     links:
       - "api"
     environment:
-      - API_HOST=api
+      - API_HOST=api:3000
