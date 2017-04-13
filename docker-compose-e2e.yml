@@ -3,6 +3,8 @@ services:
   tests:
     build: .
     command: npm test
+    environment:
+      - WEB_HOST=web
   db:
     image: mongo
     ports:
