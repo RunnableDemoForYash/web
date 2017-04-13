@@ -1,13 +1,11 @@
 const Browser = require('zombie');
 
-Browser.localhost(process.env.WEB_HOST);
-
 describe('User visits list page', function() {
 
   const browser = new Browser();
 
   before(function(done) {
-    browser.visit('/', done);
+    browser.visit('http://' + process.env.WEB_HOST, done);
   });
 
   const taskName = 'TestTask-' + Math.random();
