@@ -19,7 +19,7 @@
   "scripts": {
     "start": "node index.js",
     "prestart": "gulp",
-    "test": "sleep 5000 && mocha tests/index.js"
+    "test": "sleep 5 && mocha tests/index.js"
   },
   "author": "Runnable, Inc.",
   "license": "MIT",
