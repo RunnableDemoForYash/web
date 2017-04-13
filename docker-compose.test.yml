@@ -3,6 +3,8 @@ services:
   tests:
     build: .
     command: npm test
+    links:
+      - "web"
     environment:
       - WEB_HOST=web
   db:
