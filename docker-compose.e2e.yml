@@ -1,0 +1,44 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    links:
+      - "api"
+    environment:
+      - API_HOST=api:3000
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+  chrome:
+    image: selenium/standalone-chrome
+    links:
+      - "web"
+    ports:
+      - "4444:4444"
+  api:
+    build: 
+      context: git@github.com:RunnableDemoForYash/api.git
+    ports:
+      - "3000:3000"
+    links:
+      - "db"
+    environment:
+      - MONGODB_HOST=db
+  e2e:
+    build: 
+      context: git@github.com:RunnableDemoForYash/e2e.git
+    depends_on:
+      - db
+      - api
+      - web
+      - chrome
+    links:
+      - "web"
+      - "chrome"
+    command: sleep 10 && npm test
+    environment:
+      - WEB_URL=http://web
+      - NODE_ENV=docker
